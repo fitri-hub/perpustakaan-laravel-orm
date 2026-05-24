@@ -146,7 +146,6 @@
                         <th>Judul</th>
                         <th>Penulis</th>
                         <th>Tahun</th>
-                        <th>Kategori</th>
                         <th width="120">Aksi</th>
                     </tr>
                 </thead>
@@ -164,8 +163,6 @@
                         <td>{{ $buku->penulis }}</td>
 
                         <td>{{ $buku->tahun }}</td>
-
-                        <td>{{ $buku->kategori->nama_kategori }}</td>
 
                         <td>
 

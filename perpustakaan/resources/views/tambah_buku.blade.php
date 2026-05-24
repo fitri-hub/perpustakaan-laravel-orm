@@ -46,22 +46,6 @@
                 required>
             </div>
 
-            <div class="mb-3">
-                <label>Kategori</label>
-
-                <select name="kategori_id" class="form-control">
-
-                    @foreach($kategori as $k)
-
-                        <option value="{{ $k->id }}">
-                            {{ $k->nama_kategori }}
-                        </option>
-
-                    @endforeach
-
-                </select>
-            </div>
-
             <button type="submit" class="btn btn-primary">
                 Simpan Buku
             </button>

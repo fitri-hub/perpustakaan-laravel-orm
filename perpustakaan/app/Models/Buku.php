@@ -8,16 +8,11 @@ class Buku extends Model
 {
     protected $table = 'buku';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'judul',
         'penulis',
-        'tahun',
-        'kategori_id'
+        'tahun'
     ];
-
-    // relasi ke kategori
-    public function kategori()
-    {
-        return $this->belongsTo(Kategori::class);
-    }
 }

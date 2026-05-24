@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 
@@ -11,9 +10,7 @@ class BukuController extends Controller
     // tampil data
     public function index()
     {
-        $dataBuku = Buku::with('kategori')
-                ->where('tahun', '>=', 2000)
-                ->get();
+        $dataBuku = Buku::all();
 
         return view('buku', compact('dataBuku'));
     }
@@ -21,9 +18,7 @@ class BukuController extends Controller
     // form tambah
     public function create()
     {
-        $kategori = Kategori::all();
-
-        return view('tambah_buku', compact('kategori'));
+        return view('tambah_buku');
     }
 
     // simpan tambah
@@ -32,20 +27,18 @@ class BukuController extends Controller
         Buku::create([
             'judul' => $request->judul,
             'penulis' => $request->penulis,
-            'tahun' => $request->tahun,
-            'kategori_id' => $request->kategori_id
+            'tahun' => $request->tahun
         ]);
 
         return redirect('/buku');
     }
+
     // form edit
     public function edit($id)
     {
         $buku = Buku::find($id);
 
-        $kategori = Kategori::all();
-
-        return view('edit_buku', compact('buku', 'kategori'));
+        return view('edit_buku', compact('buku'));
     }
 
     // update data
@@ -56,8 +49,7 @@ class BukuController extends Controller
         $buku->update([
             'judul' => $request->judul,
             'penulis' => $request->penulis,
-            'tahun' => $request->tahun,
-            'kategori_id' => $request->kategori_id
+            'tahun' => $request->tahun
         ]);
 
         return redirect('/buku');
